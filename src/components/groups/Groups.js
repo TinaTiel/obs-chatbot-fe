@@ -1,8 +1,61 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { findGroups } from '../../actions/groups';
 
 const Groups = (props) => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(findGroups());
+    }, []);
+
+    const groups = useSelector((state) => state.groups);
+
+    const renderCreate = () => {
+        return (
+            <button className="ui button primary">Create New Group...</button>
+        );
+    }
+
+    const renderAdmin = () => {
+        return (
+            <div className="right floated content">
+                <button className="ui button primary">Edit</button>
+                <button className="ui button red">Delete</button>
+            </div>
+        )
+    }
+
+    const renderGroups = (groups) => {
+        if(!groups) {
+            return (
+                // <div className="ui active inverted dimmer">
+                //     <div className="ui text loader">Loading</div>
+                // </div>
+                <div>Loading...</div>
+            )
+        }
+        return Object.values(groups).map(group => (
+            <div key={group.id} className='item'>
+                {renderAdmin()}
+                <div className="content">
+                    <div className="header">{group.name}</div>
+                    <div className="description">{group.description}</div>
+                </div>
+            </div>
+        ));
+    }
+
     return (
-        <div>Groups</div>
+        <div>
+            <h2>Groups</h2>
+            {renderCreate()}
+            <div className="ui celled list">
+                {renderGroups(groups)}
+            </div>
+        </div>
     );
 };
 

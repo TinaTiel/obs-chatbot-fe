@@ -1,0 +1,6 @@
+export const types = {
+    FIND_GROUPS: 'FIND_GROUPS',
+    GET_GROUP: 'GET_GROUP',
+    SAVE_GROUP: 'SAVE_GROUP',
+    DELETE_GROUP: 'DELETE_GROUP',
+}
