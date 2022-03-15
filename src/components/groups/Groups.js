@@ -15,7 +15,9 @@ const Groups = (props) => {
 
     const renderCreate = () => {
         return (
-            <button className="ui button primary">Create New Group...</button>
+            <div className="ui right floated">
+                <button className="ui button primary">Create...</button>
+            </div>
         );
     }
 
@@ -31,10 +33,9 @@ const Groups = (props) => {
     const renderGroups = (groups) => {
         if(!groups) {
             return (
-                // <div className="ui active inverted dimmer">
-                //     <div className="ui text loader">Loading</div>
-                // </div>
-                <div>Loading...</div>
+                <div className="ui active inverted dimmer">
+                    <div className="ui text loader">Loading</div>
+                </div>
             )
         }
         return Object.values(groups).map(group => (
@@ -50,8 +51,17 @@ const Groups = (props) => {
 
     return (
         <div>
-            <h2>Groups</h2>
-            {renderCreate()}
+            <div className="ui clearing">
+                <div className="content">
+                    <div className="header">
+                        <h2>Groups</h2>
+                    </div>
+                    <div className="description">
+                        Manage groups here
+                    </div>
+                </div>
+                {renderCreate()}
+            </div>
             <div className="ui celled list">
                 {renderGroups(groups)}
             </div>

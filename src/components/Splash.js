@@ -2,7 +2,7 @@ import React from "react";
 
 const Splash = (props) => {
     return (
-        <div>Splash Page</div>
+        <div className="bg-green-400 text-white italic">Splash Page</div>
     );
 };
 
