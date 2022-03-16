@@ -4,9 +4,12 @@ import {Link} from 'react-router-dom';
 const Header = () => {
     return (
 
-        <div className="">
+        <div className="text-center md:text-left">
             <Link to='/' className="">
-                OBS Chatbot
+                <h1 className="text-c-primary 
+                hover:text-c-primary-hover-light dark:hover:text-c-primary-hover-dark">
+                    OBS Chatbot
+                </h1>
             </Link>
         </div>
     );

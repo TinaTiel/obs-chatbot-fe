@@ -1,10 +1,10 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 
-const Navbar = () => {
+const NavBar = () => {
     return (
 
-        <div className="flex flex-col">
+        <div className="flex flex-row md:flex-col justify-center">
             <Link to='/commands' className="">
                 <i className="fas fa-regular fa-circle-play ui"></i>
                 <span>Commands</span>
@@ -21,4 +21,4 @@ const Navbar = () => {
     );
 }
 
-export default Navbar;
+export default NavBar;
