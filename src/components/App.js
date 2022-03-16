@@ -12,10 +12,11 @@ const App = () => {
     return (
         <BrowserRouter>
             <div className="h-screen flex flex-col 
-            md:grid md:grid-cols-[20%_auto] md:grid-rows-[auto_1fr_auto]  bg-c-bg-light dark:bg-c-bg-dark
+            md:grid md:grid-cols-[15%_auto] md:grid-rows-[auto_1fr_auto]  bg-c-bg-light dark:bg-c-bg-dark
             font-mono text-c-text-primary dark:text-c-text-primary-dark
             ">
-                <header id="header" className="col-span-2">
+                <header id="header" className="col-span-2 
+                border-y border-fg-light dark:border-fg-dark">
                     <Header />
                 </header>
                 <nav id="navbar" >
