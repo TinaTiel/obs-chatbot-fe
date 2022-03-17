@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { findGroups } from '../../actions/groups';
+import Button from "../Button";
 
 const Groups = (props) => {
 
@@ -15,9 +16,9 @@ const Groups = (props) => {
 
     const renderCreate = () => {
         return (
-            <div className="ui right floated">
-                <button className="ui button primary">Create...</button>
-            </div>
+            <>
+                <Button text="New Group..." location="#" />
+            </>
         );
     }
 
@@ -51,18 +52,20 @@ const Groups = (props) => {
 
     return (
         <div>
-            <div className="ui clearing">
-                <div className="content">
-                    <div className="header">
-                        <h2>Groups</h2>
-                    </div>
-                    <div className="description">
-                        Manage groups here
-                    </div>
+            <div className="flex flex-row items-center">
+                <div className="grow">
+                    <h2 className="text-4xl">
+                        Groups
+                    </h2>
+                    <h3 className="dark:text-c-text-secondary-dark italic">
+                        Groups allow you to grant command permissions to one or many viewers.
+                    </h3>
                 </div>
-                {renderCreate()}
+                <div className="">
+                    {renderCreate()}
+                </div>
             </div>
-            <div className="ui celled list">
+            <div className="">
                 {renderGroups(groups)}
             </div>
         </div>
