@@ -16,17 +16,17 @@ const Groups = (props) => {
 
     const renderCreate = () => {
         return (
-            <>
-                <Button text="New Group..." location="#" />
-            </>
+            <div className="flex flex-row gap-x-4">
+                <Button text="Create Group" location="#" />
+            </div>
         );
     }
 
     const renderAdmin = () => {
         return (
-            <div className="right floated content">
-                <button className="ui button primary">Edit</button>
-                <button className="ui button red">Delete</button>
+            <div className="flex flex-row gap-x-4 justify-start">
+                <Button text="Edit" location="#" />
+                <Button text="Delete" location="#" />
             </div>
         )
     }
@@ -40,35 +40,42 @@ const Groups = (props) => {
             )
         }
         return Object.values(groups).map(group => (
-            <div key={group.id} className='item'>
-                {renderAdmin()}
-                <div className="content">
-                    <div className="header">{group.name}</div>
-                    <div className="description">{group.description}</div>
+            <div key={group.id} className='flex flex-row justify-between items-center
+            dark:hover:bg-c-fg-dark hover:bg-c-fg-light
+            py-4 px-2'>
+                <article className="
+                dark:text-c-text-secondary-dark
+                flex flex-col md:items-start items-center gap-4">
+                    <h1 className="text-2xl">{group.name}</h1>
+                    <p className="italic text-m">{group.description}</p>
+                </article>
+                <div>
+                    {renderAdmin()}
                 </div>
             </div>
         ));
     }
 
     return (
-        <div>
-            <div className="flex flex-row items-center">
-                <div className="grow">
-                    <h2 className="text-4xl">
-                        Groups
-                    </h2>
-                    <h3 className="dark:text-c-text-secondary-dark italic">
-                        Groups allow you to grant command permissions to one or many viewers.
-                    </h3>
-                </div>
-                <div className="">
-                    {renderCreate()}
+        <>
+            <div className="border-b border-fg-light dark:border-fg-dark/25">
+                <div className="flex flex-row items-center justify-between py-4">
+                    <div>
+                        <h2 className="text-2xl md:text-4xl">
+                            Groups
+                        </h2>
+                    </div>
+                    <div>
+                        {renderCreate()}
+                    </div>
                 </div>
             </div>
-            <div className="">
-                {renderGroups(groups)}
+            <div className="flex flex-col divide-y text-left">
+                
+                    {renderGroups(groups)}
+            
             </div>
-        </div>
+        </>
     );
 };
 

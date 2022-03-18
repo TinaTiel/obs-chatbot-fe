@@ -11,29 +11,40 @@ import Header from './Header';
 const App = () => {
     return (
         <BrowserRouter>
-            <div className="h-screen flex flex-col 
-            md:grid md:grid-cols-[max-content_auto] md:grid-rows-[auto_1fr_auto] md:auto-cols-fr bg-c-bg-light dark:bg-c-bg-dark
-            font-mono text-c-text-primary dark:text-c-text-primary-dark
+            <div className="h-screen w-screen flex flex-col 
+            overflow-hidden
+            bg-c-bg-light dark:bg-c-bg-dark
+            font-mono 
+            text-c-text-primary dark:text-c-text-primary-dark
             ">
                 <header id="header" className="
+                flex md:flex-row flex-col items-center justify-between
                 border-y border-fg-light dark:border-fg-dark">
                     <Logo />
+                    <Header/>
                 </header>
-                <div className="border-y border-fg-light dark:border-fg-dark">
-                    <Header />
+                <div className="
+                grow
+                flex md:flex-row flex-col w-full
+                overflow-hidden">
+                    <nav id="navbar" className="
+                    basis-1/6
+                    md:border-r md:border-b-0 border-b border-fg-light dark:border-fg-dark/25" >
+                        <NavBar />
+                    </nav>
+                    <main id="content" className="
+                    justify-center grow
+                    overflow-y-scroll
+                    text-center md:text-left
+                    py-7 px-10">
+                        <Routes>
+                            <Route path='/' exact element={<Splash />} />
+                            <Route path='/commands' exact element={<Commands />} />
+                            <Route path='/groups' exact element={<Groups />} />
+                            <Route path='/users' exact element={<Users />} />
+                        </Routes>
+                    </main>
                 </div>
-                <nav id="navbar" className="border-r border-fg-light dark:border-fg-dark/25" >
-                    <NavBar />
-                </nav>
-                <main id="content" className="grow justify-center text-center md:text-left
-                py-7 px-10">
-                    <Routes>
-                        <Route path='/' exact element={<Splash />} />
-                        <Route path='/commands' exact element={<Commands />} />
-                        <Route path='/groups' exact element={<Groups />} />
-                        <Route path='/users' exact element={<Users />} />
-                    </Routes>
-                </main>
             </div>
         </BrowserRouter>
     );
