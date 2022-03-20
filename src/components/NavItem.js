@@ -4,12 +4,15 @@ import {NavLink} from 'react-router-dom';
 const NavItem = (props) => {
 
     const baseClasses = `
-        flex flex-row content-center items-center
-        text-xl 
+        flex flex-col md:flex-row 
+        place-items-center md:content-center md:items-center
+        gap-4
+        w-full
+        text-sm md:text-xl 
         text-c-text-primary-light dark:text-c-text-primary-dark 
         hover:text-c-text-secondary-light dark:hover:text-c-text-secondary-dark 
         hover:bg-c-primary-hover-light hover:bg-c-primary-hover-dark 
-        py-6 px-6`;
+        py-4 pb-2 md:py-6 md:px-6`;
     const activeClasses = 'bg-c-primary';
 
     return (
@@ -18,7 +21,9 @@ const NavItem = (props) => {
             className={ ({isActive}) => 
                 isActive ? `${baseClasses} ${activeClasses}` : baseClasses
             } >
-            <i className={`${props.icon} fa-lg pr-2 basis-1/4`}></i>
+            <div className="h-2 md:w-6 md:h-full">
+                <i className={`${props.icon} fa-lg md:pr-2 md:basis-1/4`}></i>
+            </div>
             <span>{props.text}</span>
         </NavLink>
     );

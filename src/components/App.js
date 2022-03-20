@@ -18,6 +18,7 @@ const App = () => {
             text-c-text-primary dark:text-c-text-primary-dark
             ">
                 <header id="header" className="
+                dark:bg-c-fg-dark
                 flex md:flex-row flex-col items-center justify-between
                 border-y border-fg-light dark:border-fg-dark">
                     <Logo />
@@ -28,8 +29,12 @@ const App = () => {
                 flex md:flex-row flex-col w-full
                 overflow-hidden">
                     <nav id="navbar" className="
-                    basis-1/6
-                    md:border-r md:border-b-0 border-b border-fg-light dark:border-fg-dark/25" >
+                    fixed bottom-0 left-0
+                    md:static
+                    dark:bg-c-fg-dark
+                    w-screen
+                    md:basis-1/6
+                    md:border-r md:border-b-0 md:border-b md:border-c-fg-light md:dark:border-c-fg-dark/25" >
                         <NavBar />
                     </nav>
                     <main id="content" className="
