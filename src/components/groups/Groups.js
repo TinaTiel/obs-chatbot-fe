@@ -12,7 +12,14 @@ const Groups = (props) => {
         dispatch(findGroups());
     }, []);
 
-    const groups = useSelector((state) => state.groups);
+    const groups = [...Array(25).keys()].map(num => {
+        return {
+            id: num + 1,
+            name: `Group #${num + 1}`,
+            description: `Some description for group #${num + 1}`
+        }
+    });
+    //const groups = useSelector((state) => state.groups);
 
     const renderCreate = () => {
         return (
@@ -40,7 +47,8 @@ const Groups = (props) => {
             )
         }
         return Object.values(groups).map(group => (
-            <div key={group.id} className='flex flex-row justify-between items-center
+            <div key={group.id} className='
+            flex flex-row justify-between items-center
             dark:hover:bg-c-fg-dark hover:bg-c-fg-light
             py-4 px-2'>
                 <article className="
@@ -57,9 +65,19 @@ const Groups = (props) => {
     }
 
     return (
-        <>
-            <div className="border-b border-fg-light dark:border-fg-dark/25">
-                <div className="flex flex-row items-center justify-between py-4">
+        <article className="
+        h-full min-h-0
+        w-full min-w-0
+        flex flex-col">
+            <header className="
+            dark:bg-c-fg-dark md:dark:bg-inherit
+            border-b border-fg-light dark:border-fg-dark/25
+             md:px-4
+            ">
+                <div className="
+                flex flex-row 
+                items-center justify-between 
+                py-4">
                     <div>
                         <h2 className="text-2xl md:text-4xl">
                             Groups
@@ -69,13 +87,15 @@ const Groups = (props) => {
                         {renderCreate()}
                     </div>
                 </div>
+            </header>
+            <div className="
+            overflow-y-scroll
+            scrollbar
+            px-2 py-2
+            text-left">
+                {renderGroups(groups)}
             </div>
-            <div className="flex flex-col divide-y text-left">
-                
-                    {renderGroups(groups)}
-            
-            </div>
-        </>
+        </article>
     );
 };
 

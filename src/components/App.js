@@ -11,37 +11,41 @@ import Header from './Header';
 const App = () => {
     return (
         <BrowserRouter>
-            <div className="h-screen w-screen flex flex-col 
-            overflow-hidden
+            <div className="
+            flex flex-col
+            h-screen min-h-0
             bg-c-bg-light dark:bg-c-bg-dark
             font-mono 
             text-c-text-primary dark:text-c-text-primary-dark
             ">
                 <header id="header" className="
+                flex md:flex-row flex-col 
+                items-center justify-between
                 dark:bg-c-fg-dark
-                flex md:flex-row flex-col items-center justify-between
                 border-y border-fg-light dark:border-fg-dark">
                     <Logo />
                     <Header/>
                 </header>
                 <div className="
-                grow
-                flex md:flex-row flex-col w-full
-                overflow-hidden">
+                flex md:flex-row flex-col
+                h-full min-h-0 
+                w-full min-w-0">
                     <nav id="navbar" className="
+                    md:basis-1/6
+                    md:h-full md:min-h-0
+                    w-screen
                     fixed bottom-0 left-0
                     md:static
                     dark:bg-c-fg-dark
-                    w-screen
-                    md:basis-1/6
                     md:border-r md:border-b-0 md:border-b md:border-c-fg-light md:dark:border-c-fg-dark/25" >
                         <NavBar />
                     </nav>
                     <main id="content" className="
-                    justify-center grow
-                    overflow-y-scroll
+                    h-full min-h-0
+                    w-full min-w-0
+                    justify-center
                     text-center md:text-left
-                    py-7 px-10">
+                    ">
                         <Routes>
                             <Route path='/' exact element={<Splash />} />
                             <Route path='/commands' exact element={<Commands />} />
