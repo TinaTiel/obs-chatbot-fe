@@ -72,7 +72,7 @@ const Groups = (props) => {
             <header className="
             dark:bg-c-fg-dark md:dark:bg-inherit
             border-b border-fg-light dark:border-fg-dark/25
-             md:px-4
+            md:px-4
             ">
                 <div className="
                 flex flex-row 

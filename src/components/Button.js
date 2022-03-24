@@ -11,7 +11,7 @@ const Button = (props) => {
             hover:bg-c-primary-hover-light 
             hover:text-c-text-primary-dark
             whitespace-nowrap h-full
-            px-4 py-2 md:px-6 md:py-4"
+            px-4 py-2 md:px-4 md:py-2"
         >
             {props.text}
         </NavLink>
