@@ -20,6 +20,20 @@ module.exports = {
         'c-text-secondary-dark': '#FFFCF2',
         'c-text-primary-light': '#252422',
         'c-text-secondary-light': '#403D39'
+      },
+      animation: {
+        'fade-in': 'fadeIn 500ms ease-in',
+        'fade-out': 'fadeOut 500ms ease-in'
+      },
+      keyframes: {
+        fadeIn: {
+            '0%': {
+                opacity: 0
+            },
+            '100%': {
+                opacity: 1
+            }
+        }
       }
     },
   },
