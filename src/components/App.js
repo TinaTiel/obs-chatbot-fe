@@ -1,16 +1,17 @@
 import React from 'react';
 import NavBar from './NavBar';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import Commands from './commands/Commands';
 import Groups from './groups/Groups';
 import Users from './users/Users';
 import Splash from './Splash';
 import Logo from './Logo';
 import Header from './Header';
+import GroupsForm from './groups/GroupsForm';
 
 const App = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div className="
             flex flex-col
             h-screen min-h-0
@@ -50,12 +51,14 @@ const App = () => {
                             <Route path='/' exact element={<Splash />} />
                             <Route path='/commands' exact element={<Commands />} />
                             <Route path='/groups' exact element={<Groups />} />
+                            <Route path='/groups/create' exact element={<GroupsForm />} />
+                            <Route path='/groups/edit/:id' exact element={<GroupsForm />} />
                             <Route path='/users' exact element={<Users />} />
                         </Routes>
                     </main>
                 </div>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 };
 

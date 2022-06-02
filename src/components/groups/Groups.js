@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { findGroups } from '../../actions/groups';
-import Button from "../Button";
+import NavigableButton from "../common/NavigableButton";
 import Loading from "../common/Loading";
 
 const Groups = (props) => {
@@ -25,7 +25,7 @@ const Groups = (props) => {
     const renderCreate = () => {
         return (
             <div className="flex flex-row gap-x-4">
-                <Button text="Create Group" location="#" />
+                <NavigableButton text="Create Group" to="/groups/create" />
             </div>
         );
     }
@@ -33,8 +33,8 @@ const Groups = (props) => {
     const renderAdmin = (group) => {
         return (
             <div className="flex flex-row gap-x-4 justify-start">
-                <Button text="Edit" location="#" />
-                <Button text="Delete" location="#" />
+                <NavigableButton text="Edit" to={`/groups/edit/${group.id}`} options={{state: group}} />
+                <NavigableButton text="Delete" to="#" />
             </div>
         )
     }
