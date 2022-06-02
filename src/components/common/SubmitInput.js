@@ -2,7 +2,7 @@ import Button from "./Button";
 
 const SubmitInput = ({}) => {
     return (
-        <Button>
+        <Button callToAction >
             <input type="submit" />
         </Button>
     );

@@ -11,6 +11,8 @@ const groupReducer = (state = {}, action) => {
                 list: action.payload.data, 
                 map: _.keyBy(action.payload.data, 'id')
             };
+        case types.SAVE_GROUP:
+            return {group: {...action.payload}}
         default:
             return state;
     }

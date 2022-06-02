@@ -31,12 +31,11 @@ export const saveGroup = (group) => {
             payload: { loading: true }
         });
         try {
-
             const id = group.id? group.id : uuidv4();
-            const {data} = await groups.put(`/groups/${id}`, group);
+            await groups.put(`/groups/${id}`, group);
             dispatch({
                 type: types.SAVE_GROUP,
-                payload: {data}
+                payload: {...group, id}
             })
             
         } catch (error) {

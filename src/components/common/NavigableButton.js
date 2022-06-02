@@ -1,9 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import Button from "./Button";
 import { useNavigate } from "react-router";
 
-const NavigableButton = ({to, text, options}) => {
+const NavigableButton = ({to, text, options, callToAction}) => {
 
     let navigate = useNavigate();
 
@@ -12,7 +11,7 @@ const NavigableButton = ({to, text, options}) => {
     }
 
     return (
-        <Button onClick={onClick}>
+        <Button onClick={onClick} callToAction={callToAction} >
             {text}
         </Button>
     );

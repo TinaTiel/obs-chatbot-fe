@@ -1,15 +1,21 @@
 import {useForm} from 'react-hook-form';
 import { useLocation } from 'react-router';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { saveGroup } from '../../actions/groups';
 import Submit from '../common/SubmitInput';
 import TextInput from '../common/TextInput';
+import Loading from '../common/Loading';
 
 const GroupsForm = () => {
 
-    const {state: group} = useLocation();
-    const { register, handleSubmit, getValues } = useForm({defaultValues: group});
     const dispatch = useDispatch();
+    const groupState = useSelector(state => state?.groupState);
+    const location = useLocation();
+    const group = location.state?.group || groupState?.group ;
+
+    const { register, handleSubmit, getValues } = useForm({
+        defaultValues: group
+    });
 
     const onSubmit = (group) => {
         dispatch(saveGroup(group));
@@ -25,16 +31,18 @@ const GroupsForm = () => {
 
     return (
         <div className='p-5'>
-            <h1>{title}</h1>
-            <form onSubmit={handleSubmit(onSubmit)} onKeyDown={onKeyDown} >
-                <TextInput
-                    label="Name" 
-                    register={register("name")} />
-                <TextInput textArea
-                    label="Description" 
-                    register={register("description")} />
-                <Submit />
-            </form>
+            <Loading loading={groupState?.loading}>
+                <h1>{title}</h1>
+                <form onSubmit={handleSubmit(onSubmit)} onKeyDown={onKeyDown} >
+                    <TextInput
+                        label="Name" 
+                        register={register("name")} />
+                    <TextInput textArea
+                        label="Description" 
+                        register={register("description")} />
+                    <Submit />
+                </form>
+            </Loading>
         </div>
     )
 }

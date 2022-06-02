@@ -5,22 +5,15 @@ import { findGroups } from '../../actions/groups';
 import NavigableButton from "../common/NavigableButton";
 import Loading from "../common/Loading";
 
-const Groups = (props) => {
+const Groups = () => {
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(findGroups());
-    }, []);
+    }, [dispatch]);
 
-    // const groups = [...Array(25).keys()].map(num => {
-    //     return {
-    //         id: num + 1,
-    //         name: `Group #${num + 1}`,
-    //         description: `Some description for group #${num + 1}`
-    //     }
-    // });
-    const groups = useSelector((state) => state.groups);
+    const groupState = useSelector((state) => state.groupState);
 
     const renderCreate = () => {
         return (
@@ -33,7 +26,7 @@ const Groups = (props) => {
     const renderAdmin = (group) => {
         return (
             <div className="flex flex-row gap-x-4 justify-start">
-                <NavigableButton text="Edit" to={`/groups/edit/${group.id}`} options={{state: group}} />
+                <NavigableButton text="Edit" to={`/groups/edit/${group.id}`} options={{state: {group}}} callToAction />
                 <NavigableButton text="Delete" to="#" />
             </div>
         )
@@ -91,8 +84,8 @@ const Groups = (props) => {
             px-2 py-2
             text-left
             h-full">
-                <Loading loading={groups.loading}>
-                    {renderGroups(groups.list)}
+                <Loading loading={groupState.loading}>
+                    {renderGroups(groupState.list)}
                 </Loading>
             </div>
         </article>
