@@ -2,16 +2,16 @@ import {useForm} from 'react-hook-form';
 import { useLocation } from 'react-router';
 import { useDispatch, useSelector } from "react-redux";
 import { saveGroup } from '../../actions/groups';
-import Submit from '../common/SubmitInput';
-import TextInput from '../common/TextInput';
-import Loading from '../common/Loading';
+import Submit from '../common/form/SubmitInput';
+import TextInput from '../common/form/TextInput';
+import Loading from '../common/loading/Loading';
 
 const GroupsForm = () => {
 
     const dispatch = useDispatch();
-    const groupState = useSelector(state => state?.groupState);
+    const groupsState = useSelector(state => state?.groupsState);
     const location = useLocation();
-    const group = location.state?.group || groupState?.group ;
+    const group = location.state?.group || groupsState?.group ;
 
     const { register, handleSubmit, getValues } = useForm({
         defaultValues: group
@@ -31,7 +31,7 @@ const GroupsForm = () => {
 
     return (
         <div className='p-5'>
-            <Loading loading={groupState?.loading}>
+            <Loading loading={groupsState?.loading}>
                 <h1>{title}</h1>
                 <form onSubmit={handleSubmit(onSubmit)} onKeyDown={onKeyDown} >
                     <TextInput

@@ -1,6 +1,6 @@
-import Button from "./Button";
+import Button from "../button/Button";
 
-const SubmitInput = ({}) => {
+const SubmitInput = () => {
     return (
         <Button callToAction >
             <input type="submit" />

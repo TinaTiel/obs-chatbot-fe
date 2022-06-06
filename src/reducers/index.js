@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
+import commandsReducer from "./commandsReducer";
 import groupsReducer from "./groupsReducer";
 
 export default combineReducers({
-    groupState: groupsReducer
+    groupsState: groupsReducer,
+    commandsState: commandsReducer
 });

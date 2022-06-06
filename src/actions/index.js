@@ -1,6 +1,14 @@
 export const types = {
-    FIND_GROUPS: 'GROUPS_FIND',
-    GET_GROUP: 'GROUPS_GET',
-    SAVE_GROUP: 'GROUPS_SAVE',
-    DELETE_GROUP: 'GROUPS_DELETE'
+    GROUPS: {
+        FIND: 'GROUPS/FIND',
+        GET: 'GROUPS/GET',
+        SAVE: 'GROUPS/SAVE',
+        DELETE: 'GROUPS/DELETE'
+    },
+    COMMANDS: {
+        FIND: 'COMMANDS/FIND',
+        GET: 'COMMANDS/GET',
+        SAVE: 'COMMANDS/SAVE',
+        DELETE: 'COMMANDS/DELETE'
+    }
 }

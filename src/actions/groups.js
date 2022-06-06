@@ -5,19 +5,19 @@ import { v4 as uuidv4 } from 'uuid';
 export const findGroups = () => {
     return async (dispatch) => {
         dispatch({
-            type: types.FIND_GROUPS,
+            type: types.GROUPS.FIND,
             payload: { loading: true }
         });
         try {
             const {data} = await groups.get('/groups');
             dispatch({
-                type: types.FIND_GROUPS,
+                type: types.GROUPS.FIND,
                 payload: {data}
             })
             
         } catch (error) {
             dispatch({
-                type: types.FIND_GROUPS,
+                type: types.GROUPS.FIND,
                 payload: {error}
             })
         }
@@ -27,20 +27,20 @@ export const findGroups = () => {
 export const saveGroup = (group) => {
     return async (dispatch) => {
         dispatch({
-            type: types.SAVE_GROUP,
+            type: types.GROUPS.SAVE,
             payload: { loading: true }
         });
         try {
             const id = group.id? group.id : uuidv4();
             await groups.put(`/groups/${id}`, group);
             dispatch({
-                type: types.SAVE_GROUP,
+                type: types.GROUPS.SAVE,
                 payload: {...group, id}
             })
             
         } catch (error) {
             dispatch({
-                type: types.SAVE_GROUP,
+                type: types.GROUPS.SAVE,
                 payload: {error}
             })
         }
