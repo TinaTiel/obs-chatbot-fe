@@ -8,6 +8,7 @@ import Users from './users/Users';
 import Splash from './Splash';
 import Logo from './Logo';
 import Header from './Header';
+import CommandForm from './commands/form/CommandForm';
 
 const App = () => {
     return (
@@ -55,6 +56,14 @@ const App = () => {
                             <Route path='/commands' 
                                 exact 
                                 element={<CommandsList />} 
+                            />
+                            <Route path='/commands/create' 
+                                exact 
+                                element={<CommandForm />} 
+                            />
+                            <Route path='/commands/edit/:id' 
+                                exact 
+                                element={<CommandForm />} 
                             />
                             <Route path='/groups' 
                                 exact 

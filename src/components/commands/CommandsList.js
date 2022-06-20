@@ -3,6 +3,7 @@ import ItemListContent from "../common/list/ItemListContent";
 import ItemListContainer from "../common/list/ItemListContainer";
 import ItemListHeader from "../common/list/ItemListHeader";
 import NavigableButton from "../common/button/NavigableButton";
+import Loading from "../common/loading/Loading";
 import {findCommands} from '../../actions/commands';
 import { useDispatch, useSelector } from "react-redux";
 import CommandsListItem from "./CommandsListItem";
@@ -43,7 +44,9 @@ const CommandsList = () => {
                 </div>
             </ItemListHeader>
             <ItemListContent>
-                {renderItems()}
+                <Loading loading={commandsState.loading}>
+                    {renderItems()}
+                </Loading>
             </ItemListContent>
         </ItemListContainer>
     );
