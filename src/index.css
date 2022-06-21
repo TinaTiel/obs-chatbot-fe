@@ -92,4 +92,30 @@
             opacity: 0.5;
         }
     }
+
+    /** React Select Customization **/
+    .react-select-container .react-select-custom__control {
+        @apply  text-xl p-2
+                dark:bg-c-fg-dark dark:border-c-fg-dark 
+                border-c-fg-light
+    }
+    .react-select-container .react-select-custom__menu { 
+        @apply  dark:bg-c-fg-dark
+    }
+    .react-select-container .react-select-custom__input-container, 
+    .react-select-container .react-select-custom__placeholder, 
+    .react-select-container .react-select-custom__single-value {
+        @apply  dark:text-c-text-primary-dark
+                text-c-text-primary-light
+    }
+    .react-select-container .react-select-custom__option {
+        @apply  text-xl p-4
+                dark:text-c-text-primary-dark dark:hover:bg-c-primary-hover-dark
+                text-c-text-primary-light hover:bg-c-primary-hover-light
+    }
+    .react-select-container .react-select-custom__option--is-selected {
+        @apply  dark:text-c-text-primary-dark dark:bg-c-primary
+                text-c-text-primary-light bg-c-primary
+    }
+
 }

@@ -3,6 +3,8 @@ import { useController } from "react-hook-form";
 
 const SelectInput = ({name, label, options, control}) => {
 
+    const {field} = useController({name, control});
+
     const onChange = (change, fieldOnChange) => {
         fieldOnChange(change.value)
     }
@@ -10,8 +12,6 @@ const SelectInput = ({name, label, options, control}) => {
     const getValue = (fieldValue) => {
         return options.find(it => it.value === fieldValue)
     }
-
-    const {field} = useController({name, control});
 
     return (
         <div>
@@ -23,6 +23,8 @@ const SelectInput = ({name, label, options, control}) => {
                 options={options}
                 value={getValue(field.value)}
                 onChange={change => onChange(change, field.onChange)}
+                className='react-select-container'
+                classNamePrefix='react-select-custom'
             />
         </div>
 
