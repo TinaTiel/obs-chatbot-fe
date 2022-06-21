@@ -8,10 +8,12 @@ const TextInput = ({
     const renderInput = () => {
 
         let classes = `
-            text-c-text-primary-dark dark:text-c-text-primary-light
-            text-xl
-            p-5
+            text-xl p-5
             w-full
+            rounded
+            dark:bg-c-fg-dark
+            dark:text-c-text-primary-dark text-c-text-primary-light
+            border dark:border-c-fg-dark border-c-fg-light
         `;
         if(textArea) {
             return <textarea type="text"  {...register} className={classes} 

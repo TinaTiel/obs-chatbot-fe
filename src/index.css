@@ -111,7 +111,7 @@
     .react-select-container .react-select-custom__option {
         @apply  text-xl p-4
                 dark:text-c-text-primary-dark dark:hover:bg-c-primary-hover-dark
-                text-c-text-primary-light hover:bg-c-primary-hover-light
+                text-c-text-primary-light hover:bg-c-primary-hover-light hover:text-c-text-primary-dark
     }
     .react-select-container .react-select-custom__option--is-selected {
         @apply  dark:text-c-text-primary-dark dark:bg-c-primary
