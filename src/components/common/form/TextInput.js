@@ -1,9 +1,14 @@
+import { useController } from "react-hook-form";
+import InputContainer from "./InputContainer";
 
 const TextInput = ({
+    name,
     label,
-    register,
+    control,
     textArea
 }) => {
+
+    const {field} = useController({name, control});
 
     const renderInput = () => {
 
@@ -16,22 +21,18 @@ const TextInput = ({
             border dark:border-c-fg-dark border-c-fg-light
         `;
         if(textArea) {
-            return <textarea type="text"  {...register} className={classes} 
+            return <textarea type="text"  {...field} className={classes} 
                 rows={4}
             />
         } else {
-            return <input type="text" {...register} className={classes} />
+            return <input type="text" {...field} className={classes} />
         }
     }
 
     return (
-        <div className="w-100 py-5">
-            <label className="
-               block
-               pb-5
-            ">{label}</label>
+        <InputContainer {...{name, label}}>
             {renderInput()}
-        </div>
+        </InputContainer>
     );
 }
 

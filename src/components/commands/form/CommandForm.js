@@ -6,6 +6,9 @@ import Submit from '../../common/form/SubmitInput';
 import TextInput from '../../common/form/TextInput';
 import Loading from '../../common/loading/Loading';
 import SequenceTypeForm from './sequenceType/SequenceTypeForm';
+import ItemListContent from '../../common/list/ItemListContent';
+import ItemListContainer from '../../common/list/ItemListContainer';
+import ItemListHeader from '../../common/list/ItemListHeader';
 
 const CommandForm = () => {
 
@@ -122,23 +125,30 @@ const CommandForm = () => {
     const title = command ? `Edit Command '${command.name}'` : "Create Command"
 
     return (
-        <div className='p-5'>
-            <Loading loading={commandsState?.loading}>
-                <h1>{title}</h1>
-                <form onSubmit={form.handleSubmit(onSubmit)} onKeyDown={onKeyDown} >
-                    <TextInput
-                        label="Name" 
-                        register={form.register("name")} />
-                    <TextInput textArea
-                        label="Description" 
-                        register={form.register("description")} />
-                    <SequenceTypeForm 
-                        form={form} 
-                    />
-                    <Submit />
-                </form>
-            </Loading>
-        </div>
+        <ItemListContainer>
+            <ItemListContent>
+                <Loading loading={commandsState?.loading}>
+                    <h2 className="text-2xl md:text-4xl">
+                        {title}
+                    </h2>
+                    <form onSubmit={form.handleSubmit(onSubmit)} onKeyDown={onKeyDown} >
+                        <TextInput
+                            label="Name"
+                            name="name"
+                            control={form.control}
+                        />
+                        <TextInput textArea
+                            label="Description of the crap" 
+                            name="description"
+                            control={form.control} />
+                        <SequenceTypeForm 
+                            form={form} 
+                        />
+                        <Submit />
+                    </form>
+                </Loading>
+            </ItemListContent>
+        </ItemListContainer>
     )
 }
 

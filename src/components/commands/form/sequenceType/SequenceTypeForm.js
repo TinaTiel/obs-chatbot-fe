@@ -13,11 +13,11 @@ const SequenceTypeForm = ({form}) => {
     const renderFormByType = () => {
         switch (sequenceType) {
             case 'inOrder':
-                return <InOrderForm {...{form}} />
+                return <InOrderForm {...{control}} />
             case 'randomOrder':
-                return <RandomOrderForm {...{form}} />
+                return <RandomOrderForm {...{control}} />
             default:
-                return <div>Unknown</div>
+                return <div>Unknown Sequence Type! Contact the Developer</div>
         }
     }
 

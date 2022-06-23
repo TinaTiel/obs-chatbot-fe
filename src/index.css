@@ -118,4 +118,21 @@
                 text-c-text-primary-light bg-c-primary
     }
 
+    /** Toggle/Boolean Input **/
+    .toggle-bg:after {
+        content: '';
+        @apply absolute top-1 left-2
+        bg-white
+        border dark:border-c-fg-dark border-c-fg-light
+        h-8 w-8 transition 
+        shadow-sm
+    }
+    input:checked + .toggle-bg:after {
+        transform: translateX(100%);
+        @apply border-white
+    }
+    input:checked + .toggle-bg {
+        @apply bg-c-primary border-c-primary
+    }
+
 }

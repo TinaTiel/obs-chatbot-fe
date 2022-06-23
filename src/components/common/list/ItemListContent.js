@@ -2,9 +2,9 @@ const ItemListContent = ({children}) => {
 
     return (
         <div className="
-            overflow-y-scroll
+            overflow-y-auto
             scrollbar
-            px-2 py-2
+            px-4 py-4
             text-left
             h-full">
             {children}

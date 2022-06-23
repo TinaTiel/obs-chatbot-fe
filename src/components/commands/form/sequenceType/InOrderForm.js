@@ -1,7 +1,14 @@
-const InOrderForm = ({sequenceType, register}) => {
+import BooleanInput from "../../../common/form/BooleanInput";
+
+const InOrderForm = ({control}) => {
 
     return (
-        <div>in order form</div>
+        <div>
+            <BooleanInput 
+                control={control} 
+                name='actionSequence.reverse' 
+                label='Reverse action order' />
+        </div>
     )
 }
 

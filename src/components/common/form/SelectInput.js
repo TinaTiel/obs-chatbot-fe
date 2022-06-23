@@ -1,5 +1,6 @@
 import Select from "react-select";
 import { useController } from "react-hook-form";
+import InputContainer from "./InputContainer";
 
 const SelectInput = ({name, label, options, control}) => {
 
@@ -14,11 +15,7 @@ const SelectInput = ({name, label, options, control}) => {
     }
 
     return (
-        <div>
-            <label className="
-                block
-                pb-5
-            ">{label}</label>
+        <InputContainer {...{name, label}}>
             <Select 
                 options={options}
                 value={getValue(field.value)}
@@ -26,7 +23,7 @@ const SelectInput = ({name, label, options, control}) => {
                 className='react-select-container'
                 classNamePrefix='react-select-custom'
             />
-        </div>
+        </InputContainer>
 
     );
 
