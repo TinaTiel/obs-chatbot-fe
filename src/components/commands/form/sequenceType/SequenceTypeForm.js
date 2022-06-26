@@ -1,3 +1,4 @@
+import InputGroup from "../../../common/form/InputGroup";
 import SelectInput from "../../../common/form/SelectInput";
 import InOrderForm from "./InOrderForm";
 import RandomOrderForm from "./RandomOrderForm";
@@ -33,7 +34,7 @@ const SequenceTypeForm = ({form}) => {
     ]
 
     return (
-        <div>
+        <InputGroup name={"Sequence Settings"}>
             <SelectInput 
                 name="actionSequence.sequenceType"
                 label="Sequence Type"
@@ -41,7 +42,7 @@ const SequenceTypeForm = ({form}) => {
                 control={control}
             />
             {renderFormByType()}
-        </div>
+        </InputGroup>
     )
 }
 

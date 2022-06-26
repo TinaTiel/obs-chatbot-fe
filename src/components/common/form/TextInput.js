@@ -8,7 +8,7 @@ const TextInput = ({
     textArea
 }) => {
 
-    const {field} = useController({name, control});
+    const {field} = useController({name, control, defaultValue: ''});
 
     const renderInput = () => {
 

@@ -22,8 +22,12 @@ const BooleanInput = ({control, name, label}) => {
         ${field.value ? 'text-c-text-primary-dark' : 'dark:text-c-text-primary-dark text-c-text-primary-light'}`;
 
     return (
-        <InputContainer {...{name, label}}>
-            <label className="flex items-center cursor-pointer mb-4 relative w-20">
+        /** don't provide name prop to InputContainer, as we already use it in 
+         * the label here in this special case...otherwise, clicking the label 
+         * will interact with the checkbox/toggle 
+         * **/
+        <InputContainer {...{label}}> 
+            <label className="flex items-center cursor-pointer relative w-20">
                  <input type="checkbox" 
                      checked={field.value}
                      onChange={onChange}

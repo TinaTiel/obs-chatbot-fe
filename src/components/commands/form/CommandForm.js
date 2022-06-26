@@ -75,6 +75,7 @@ const CommandForm = () => {
                         <SequenceTypeForm 
                             form={form} 
                         />
+                        <br />
                         <Submit />
                     </form>
                 </Loading>
