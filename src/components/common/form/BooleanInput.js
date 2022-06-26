@@ -3,7 +3,7 @@ import InputContainer from "./InputContainer";
 
 const BooleanInput = ({control, name, label}) => {
 
-    const {field} = useController({name, control});
+    const {field} = useController({name, control, defaultValue: false});
 
     const onChange = (e) => {
         field.onChange(e.target.checked);

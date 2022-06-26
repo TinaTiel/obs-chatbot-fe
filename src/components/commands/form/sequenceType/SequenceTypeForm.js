@@ -8,16 +8,16 @@ const SequenceTypeForm = ({form}) => {
 
     const sequenceType = watch('actionSequence.sequenceType');
 
-    console.log(sequenceType)
-
     const renderFormByType = () => {
-        switch (sequenceType) {
-            case 'inOrder':
-                return <InOrderForm {...{control}} />
-            case 'randomOrder':
-                return <RandomOrderForm {...{control}} />
-            default:
-                return <div>Unknown Sequence Type! Contact the Developer</div>
+        if(sequenceType) {
+            switch (sequenceType) {
+                case 'inOrder':
+                    return <InOrderForm {...{control}} />
+                case 'randomOrder':
+                    return <RandomOrderForm {...{control}} />
+                default:
+                    return <div>Unknown Sequence Type! Contact the Developer</div>
+            }
         }
     }
 
