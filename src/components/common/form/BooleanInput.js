@@ -1,9 +1,9 @@
 import { useController } from "react-hook-form";
 import InputContainer from "./InputContainer";
 
-const BooleanInput = ({control, name, label}) => {
+const BooleanInput = ({control, name, label, defaultValue=false}) => {
 
-    const {field} = useController({name, control, defaultValue: false});
+    const {field} = useController({name, control, defaultValue});
 
     const onChange = (e) => {
         field.onChange(e.target.checked);

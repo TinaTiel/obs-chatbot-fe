@@ -2,9 +2,9 @@ import Select from "react-select";
 import { useController } from "react-hook-form";
 import InputContainer from "./InputContainer";
 
-const SelectInput = ({name, label, options, control}) => {
+const SelectInput = ({name, label, control, options, defaultValue=null}) => {
 
-    const {field} = useController({name, control});
+    const {field} = useController({name, control, defaultValue});
 
     const onChange = (change, fieldOnChange) => {
         fieldOnChange(change.value)

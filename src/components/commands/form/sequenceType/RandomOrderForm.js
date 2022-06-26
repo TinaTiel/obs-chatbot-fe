@@ -1,7 +1,19 @@
-const RandomOrderForm = ({sequenceType, register}) => {
+import BooleanInput from "../../../common/form/BooleanInput";
+import NumericInput from "../../../common/form/NumericInput";
+
+const RandomOrderForm = ({prefix, control}) => {
 
     return (
-        <div>random order form</div>
+        <div>
+            <NumericInput control={control}
+                name={`${prefix}.pickQty`}
+                label="Pick Quantity"
+            />
+            <BooleanInput control={control} 
+                name={`${prefix}.maintainOrder`} 
+                label="Maintain Order" 
+            />
+        </div>
     )
 }
 

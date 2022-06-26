@@ -22,7 +22,7 @@ const CommandForm = () => {
             "options": {
                 
             },
-            "sequenceType": "inOrder"
+            "sequenceType": "randomOrder"
         },
         "description": "nisi sed ea sit",
         "id": "e46685a8-0895-be75-c8f0-be618204bd50",
@@ -38,7 +38,7 @@ const CommandForm = () => {
     };
 
     const form = useForm({
-        // defaultValues: command,
+        // defaultValues: command, 
         shouldUnregister: true
     });
 

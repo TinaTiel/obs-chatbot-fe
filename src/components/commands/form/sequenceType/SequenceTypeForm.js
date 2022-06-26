@@ -15,7 +15,7 @@ const SequenceTypeForm = ({form}) => {
                 case 'inOrder':
                     return <InOrderForm {...{control}} />
                 case 'randomOrder':
-                    return <RandomOrderForm {...{control}} />
+                    return <RandomOrderForm {...{control, prefix: 'actionSequence'}} />
                 default:
                     return <div>Unknown Sequence Type! Contact the Developer</div>
             }

@@ -5,10 +5,11 @@ const TextInput = ({
     name,
     label,
     control,
-    textArea
+    textArea, 
+    defaultValue=''
 }) => {
 
-    const {field} = useController({name, control, defaultValue: ''});
+    const {field} = useController({name, control, defaultValue});
 
     const renderInput = () => {
 
