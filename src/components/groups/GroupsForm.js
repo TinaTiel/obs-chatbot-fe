@@ -5,6 +5,8 @@ import { saveGroup } from '../../actions/groups';
 import Submit from '../common/form/SubmitInput';
 import TextInput from '../common/form/TextInput';
 import Loading from '../common/loading/Loading';
+import ItemListContainer from '../common/list/ItemListContainer';
+import ItemListContent from '../common/list/ItemListContent';
 
 const GroupsForm = () => {
 
@@ -13,7 +15,7 @@ const GroupsForm = () => {
     const location = useLocation();
     const group = location.state?.group || groupsState?.group ;
 
-    const { register, handleSubmit, getValues } = useForm({
+    const { control, handleSubmit, getValues } = useForm({
         defaultValues: group
     });
 
@@ -30,20 +32,24 @@ const GroupsForm = () => {
     const title = group ? `Edit Group '${group.name}'` : "Create Group"
 
     return (
-        <div className='p-5'>
-            <Loading loading={groupsState?.loading}>
-                <h1>{title}</h1>
-                <form onSubmit={handleSubmit(onSubmit)} onKeyDown={onKeyDown} >
-                    <TextInput
-                        label="Name" 
-                        register={register("name")} />
-                    <TextInput textArea
-                        label="Description" 
-                        register={register("description")} />
-                    <Submit />
-                </form>
-            </Loading>
-        </div>
+        <ItemListContainer>
+            <ItemListContent>
+                <Loading loading={groupsState?.loading}>
+                    <h1>{title}</h1>
+                    <form onSubmit={handleSubmit(onSubmit)} onKeyDown={onKeyDown} >
+                        <TextInput
+                            label="Name"
+                            name='name'
+                            control={control} />
+                        <TextInput textArea
+                            label="Description" 
+                            name="description"
+                            control={control} />
+                        <Submit />
+                    </form>
+                </Loading>
+            </ItemListContent>
+        </ItemListContainer>
     )
 }
 

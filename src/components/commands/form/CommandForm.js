@@ -1,5 +1,5 @@
 import {useForm} from 'react-hook-form';
-import { useLocation } from 'react-router';
+// import { useLocation } from 'react-router';
 import { useDispatch, useSelector } from "react-redux";
 import { saveCommand } from '../../../actions/commands';
 import Submit from '../../common/form/SubmitInput';
@@ -8,13 +8,12 @@ import Loading from '../../common/loading/Loading';
 import SequenceTypeForm from './sequenceType/SequenceTypeForm';
 import ItemListContent from '../../common/list/ItemListContent';
 import ItemListContainer from '../../common/list/ItemListContainer';
-import ItemListHeader from '../../common/list/ItemListHeader';
 
 const CommandForm = () => {
 
     const dispatch = useDispatch();
     const commandsState = useSelector(state => state?.commandsState);
-    const location = useLocation();
+    // const location = useLocation();
     // const command = location.state?.command || commandsState?.command ;
     const command = {
         "actionSequence": {
