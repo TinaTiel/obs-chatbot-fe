@@ -8,6 +8,7 @@ import Loading from '../../common/loading/Loading';
 import SequenceTypeForm from './sequenceType/SequenceTypeForm';
 import ItemListContent from '../../common/list/ItemListContent';
 import ItemListContainer from '../../common/list/ItemListContainer';
+import ActionsForm from './action/ActionsForm';
 
 const CommandForm = () => {
 
@@ -25,7 +26,7 @@ const CommandForm = () => {
         },
         "description": "nisi sed ea sit",
         "id": "e46685a8-0895-be75-c8f0-be618204bd50",
-        "name": "Intelligent",
+        "name": "cheer",
         "owner": "468b4de3-004b-97b7-b393-48913103a1cf",
         "permissions": {
             "groups": [],
@@ -71,9 +72,8 @@ const CommandForm = () => {
                             label="Description" 
                             name="description"
                             control={form.control} />
-                        <SequenceTypeForm 
-                            form={form} 
-                        />
+                        <SequenceTypeForm {...{form}} />
+                        <ActionsForm {...{form}} />
                         <br />
                         <Submit />
                     </form>
