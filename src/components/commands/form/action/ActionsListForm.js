@@ -1,4 +1,4 @@
-import { Droppable, Draggable } from "react-beautiful-dnd";
+import { Droppable } from "react-beautiful-dnd";
 import ActionTypeForm from "./ActionTypeForm";
 
 const ActionsListForm = ({fieldArray, form, prefix}) => {

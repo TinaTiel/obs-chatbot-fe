@@ -1,8 +1,14 @@
-const SendMessageForm = ({control}) => {
+import TextInput from "../../../../common/form/TextInput";
+
+const SendMessageForm = ({prefix, control}) => {
 
     return (
         <div>
-            SendMessageForm
+            <TextInput textArea
+                name={`${prefix}.message`}
+                label='Message'
+                control={control}
+            />
         </div>
     )
 }

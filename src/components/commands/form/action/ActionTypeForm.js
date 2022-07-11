@@ -24,27 +24,25 @@ const ActionTypeForm = ({form, field, prefix, index, remove}) => {
     const actionTypes = {
         sendMessage: {
             label: "Send Chat Message",
-            form: <SendMessageForm {...{control}} />
+            form: <SendMessageForm {...{prefix: name, control}} />
         },
         obsSourceVisibility: {
             label: "Show/Hide Source",
-            form: <ObsSourceVisibilityForm {...{control}} />
+            form: <ObsSourceVisibilityForm {...{prefix: name, control}} />
         },
         wait: {
             label: "Wait",
-            form: <WaitForm {...{control}} />
+            form: <WaitForm {...{prefix: name, control}} />
         },
         executeSequence: {
             label: "Execute Command",
-            form: <ExecuteSequenceForm {...{control}} />
+            form: <ExecuteSequenceForm {...{prefix: name, control}} />
         }
     }
 
     const renderFormByType = () => {
         if(actionType) {
             return actionTypes[actionType].form;
-        } else {
-            return <div>Unknown Action Type! Contact the Developer</div>
         }
     }
 
@@ -79,7 +77,6 @@ const ActionTypeForm = ({form, field, prefix, index, remove}) => {
                     </div>
                     <div className="grow">
                         <div className="w-100">
-                            {field.id}
                             <SelectInput 
                                 name={`${name}.actionType`}
                                 label="Action Type"

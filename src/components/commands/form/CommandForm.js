@@ -9,11 +9,18 @@ import SequenceTypeForm from './sequenceType/SequenceTypeForm';
 import ItemListContent from '../../common/list/ItemListContent';
 import ItemListContainer from '../../common/list/ItemListContainer';
 import ActionsForm from './action/ActionsForm';
+import { useEffect } from "react";
+import { findCommands } from '../../../actions/commands';
 
 const CommandForm = () => {
 
     const dispatch = useDispatch();
     const commandsState = useSelector(state => state?.commandsState);
+
+    useEffect(() => {
+        dispatch(findCommands());
+    }, [dispatch]);
+
     // const location = useLocation();
     // const command = location.state?.command || commandsState?.command ;
     const command = {
