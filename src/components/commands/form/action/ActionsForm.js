@@ -21,7 +21,13 @@ const ActionsForm = ({form}) => {
 
     const onDragEnd = (result) => {
         const {source, destination} = result;
-        fieldArray.move(source.index, destination.index);
+        if(source && destination) {
+            if(source.index === destination.index) {
+                return;
+            } else {
+                fieldArray.move(source.index, destination.index);
+            }
+        }
     }
 
     return (

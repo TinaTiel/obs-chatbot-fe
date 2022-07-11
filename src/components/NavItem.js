@@ -1,11 +1,11 @@
 import React from "react";
 import {NavLink} from 'react-router-dom';
 
-const NavItem = (props) => {
+const NavItem = ({location, icon, text}) => {
 
     const baseClasses = `
         flex flex-col md:flex-row 
-        place-items-center md:content-center md:items-center
+        place-items-center md:content-center md:items-center justify-start
         gap-4
         w-full
         text-sm md:text-xl 
@@ -17,14 +17,14 @@ const NavItem = (props) => {
 
     return (
         <NavLink 
-            to={props.location} 
+            to={location} 
             className={ ({isActive}) => 
                 isActive ? `${baseClasses} ${activeClasses}` : baseClasses
             } >
-            <div className="h-2 md:w-6 md:h-full">
-                <i className={`${props.icon} fa-lg md:pr-2 md:basis-1/4`}></i>
+            <div className="h-2 md:w-6 md:h-full md:pr-2 md:basis-1/4">
+                {icon}
             </div>
-            <span>{props.text}</span>
+            <span>{text}</span>
         </NavLink>
     );
 };

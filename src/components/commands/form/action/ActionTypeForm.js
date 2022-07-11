@@ -5,6 +5,8 @@ import WaitForm from "./system/WaitForm";
 import ExecuteSequenceForm from "./system/ExecuteSequenceForm";
 import Button from "../../../common/button/Button";
 import { Draggable } from "react-beautiful-dnd";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const ActionTypeForm = ({form, field, prefix, index, remove}) => {
 
@@ -59,30 +61,33 @@ const ActionTypeForm = ({form, field, prefix, index, remove}) => {
                 <div
                     {...draggableProps}
                     ref={innerRef}
-                    className="flex w-100
+                    className="
+                        flex w-100
                         my-2
                         gap-2
                     "
                 >
                     <div 
-                    {...dragHandleProps}
+                        {...dragHandleProps}
                         className="
+                            flex items-center
+                            pr-2
                             text-xl
                             border-r dark:border-c-fg-dark border-c-fg-light"
-                        >
-                        Drag Me
+                    >
+                        <FontAwesomeIcon icon={faBars} size='xl' />
                     </div>
-                    <div>
-                    <div>
-                        {field.id}
-                        <SelectInput 
-                            name={`${name}.actionType`}
-                            label="Action Type"
-                            options={options}
-                            control={control}
-                        />
-                        {renderFormByType()}
-                    </div>
+                    <div className="grow">
+                        <div className="w-100">
+                            {field.id}
+                            <SelectInput 
+                                name={`${name}.actionType`}
+                                label="Action Type"
+                                options={options}
+                                control={control}
+                            />
+                            {renderFormByType()}
+                        </div>
                     </div>
                     <div>
                         <Button callToAction onClick={e => onRemoveAction(e, index)}>X</Button>
