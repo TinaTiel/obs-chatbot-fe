@@ -11,10 +11,15 @@ const ActionsListForm = ({fieldArray, form, prefix}) => {
                 <div 
                     ref={innerRef}
                     {...droppableProps}
+                    
                 >
-                    {fields.map((field, index) => 
-                        <ActionTypeForm key={field.id} {...{form, field, prefix, index, remove}} />
-                    )}
+                    {fields.map((field, index) => {
+                        
+                        return <>
+                            {index > 0 ? <hr className="dark:border-c-fg-dark border-c-fg-light"/> : null}
+                            <ActionTypeForm key={field.id} {...{form, field, prefix, index, remove}} />
+                        </>
+                    })}
                     {placeholder}
                 </div>
             )}

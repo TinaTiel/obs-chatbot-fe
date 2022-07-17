@@ -6,7 +6,7 @@ import ExecuteSequenceForm from "./system/ExecuteSequenceForm";
 import Button from "../../../common/button/Button";
 import { Draggable } from "react-beautiful-dnd";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const ActionTypeForm = ({form, field, prefix, index, remove}) => {
 
@@ -61,7 +61,7 @@ const ActionTypeForm = ({form, field, prefix, index, remove}) => {
                     ref={innerRef}
                     className="
                         flex w-100
-                        my-2
+                        py-3   
                         gap-2
                     "
                 >
@@ -83,11 +83,22 @@ const ActionTypeForm = ({form, field, prefix, index, remove}) => {
                                 options={options}
                                 control={control}
                             />
-                            {renderFormByType()}
+                            <div className="pl-4">
+                                {renderFormByType()}
+                            </div>
                         </div>
                     </div>
                     <div>
-                        <Button callToAction onClick={e => onRemoveAction(e, index)}>X</Button>
+                        <Button 
+                            className="
+                                h-min
+                                dark:border-c-fg-dark border-c-fg-light
+
+                            "
+                            onClick={e => onRemoveAction(e, index)}
+                        >
+                            <FontAwesomeIcon icon={faXmark} size='lg' />
+                        </Button>
                     </div>
                 </div>
             )}

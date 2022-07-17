@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({children, onClick, callToAction}) => {
+const Button = ({children, onClick, callToAction, className}) => {
 
     let classes = `
         border border-c-primary rounded-lg
@@ -17,6 +17,10 @@ const Button = ({children, onClick, callToAction}) => {
         classes += `
             bg-c-primary text-c-text-primary-dark
         `;
+    }
+
+    if(className) {
+        classes += " " + className;
     }
 
     return (

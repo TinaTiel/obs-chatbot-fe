@@ -3,6 +3,8 @@ import { useFieldArray } from "react-hook-form";
 import Button from "../../../common/button/Button";
 import { DragDropContext } from "react-beautiful-dnd";
 import ActionsListForm from "./ActionsListForm";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 
 const ActionsForm = ({form}) => {
 
@@ -35,7 +37,11 @@ const ActionsForm = ({form}) => {
             <DragDropContext onDragEnd={onDragEnd}>
                 <ActionsListForm {...{fieldArray, form, prefix}} />
             </DragDropContext>
-            <Button callToAction onClick={onAddAction}>Add Action</Button>
+            <Button className="block w-full
+                border-dashed dark:border-c-fg-dark border-c-fg-light
+                flex justify-center gap-2
+            "
+                onClick={onAddAction}><FontAwesomeIcon icon={faSquarePlus} size='xl' /><span>Add Actions</span></Button>
         </InputGroup>
     );
 }
