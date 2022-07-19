@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { findGroups } from '../../actions/groups';
+import { useFindAllGroupsQuery } from "../../services/groups";
 import NavigableButton from "../common/button/NavigableButton";
 import ItemListContent from "../common/list/ItemListContent";
 import ItemListContainer from "../common/list/ItemListContainer";
@@ -11,23 +8,15 @@ import ItemListHeader from "../common/list/ItemListHeader";
 
 const GroupsList = () => {
 
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(findGroups());
-    }, [dispatch]);
-
-    const groupsState = useSelector((state) => state.groupsState);
+    const {data, error, isLoading} = useFindAllGroupsQuery();
 
     const renderItems = () => {
-        const {list} = groupsState;
-        if(list) {
-            return list.map(group => <GroupsListItem 
-                    key={group.id} 
-                    group={group} 
-                />
-            );
-        }
+        return data?.map(group => 
+            <GroupsListItem 
+                key={group.id} 
+                group={group} 
+            />
+        );
     }
 
     return (
@@ -45,7 +34,7 @@ const GroupsList = () => {
                 </div>
             </ItemListHeader>
             <ItemListContent>
-                <Loading loading={groupsState.loading}>
+                <Loading loading={isLoading}>
                     {renderItems()}
                 </Loading>
             </ItemListContent>

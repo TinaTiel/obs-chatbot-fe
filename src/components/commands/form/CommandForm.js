@@ -1,7 +1,4 @@
 import {useForm} from 'react-hook-form';
-// import { useLocation } from 'react-router';
-import { useDispatch, useSelector } from "react-redux";
-import { saveCommand } from '../../../actions/commands';
 import Submit from '../../common/form/SubmitInput';
 import TextInput from '../../common/form/TextInput';
 import Loading from '../../common/loading/Loading';
@@ -9,49 +6,24 @@ import SequenceTypeForm from './sequenceType/SequenceTypeForm';
 import ItemListContent from '../../common/list/ItemListContent';
 import ItemListContainer from '../../common/list/ItemListContainer';
 import ActionsForm from './action/ActionsForm';
-import { useEffect } from "react";
-import { findCommands } from '../../../actions/commands';
+import { useLocation } from 'react-router';
+import { useSaveCommandMutation } from '../../../services/commands';
 
 const CommandForm = () => {
 
-    const dispatch = useDispatch();
-    const commandsState = useSelector(state => state?.commandsState);
+    const location = useLocation();
+    const [saveCommand, {data, error, isLoading}] = useSaveCommandMutation();
 
-    useEffect(() => {
-        dispatch(findCommands());
-    }, [dispatch]);
-
-    // const location = useLocation();
-    // const command = location.state?.command || commandsState?.command ;
-    const command = {
-        "actionSequence": {
-            "actions": [],
-            "options": {
-                
-            },
-            "sequenceType": "randomOrder"
-        },
-        "description": "nisi sed ea sit",
-        "id": "e46685a8-0895-be75-c8f0-be618204bd50",
-        "name": "cheer",
-        "owner": "468b4de3-004b-97b7-b393-48913103a1cf",
-        "permissions": {
-            "groups": [],
-            "platforms": {
-                "twitch": [],
-                "youtube": []
-            }
-        }
-    };
+    const command = location.state?.command || data;
 
     const form = useForm({
-        // defaultValues: command, 
+        defaultValues: command, 
         shouldUnregister: true
     });
 
     const onSubmit = (command) => {
         console.log(command)
-        dispatch(saveCommand(command));
+        saveCommand({id: command?.id, command})
     }
 
     const onKeyDown = (e) => {
@@ -65,7 +37,7 @@ const CommandForm = () => {
     return (
         <ItemListContainer>
             <ItemListContent>
-                <Loading loading={commandsState?.loading}>
+                <Loading loading={isLoading}>
                     <h2 className="text-2xl md:text-4xl">
                         {title}
                     </h2>

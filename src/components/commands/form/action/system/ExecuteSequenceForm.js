@@ -1,13 +1,14 @@
 import SelectInput from "../../../../common/form/SelectInput";
 import { useSelector } from "react-redux";
+import { useFindAllCommandsQuery } from "../../../../../services/commands";
 
 const ExecuteSequenceForm = ({prefix, control}) => {
 
-    const {list} = useSelector((state) => state.commandsState);
+    const {data, error, isLoading} = useFindAllCommandsQuery();
 
     let options = [];
-    if(list) {
-        options.push(...list.map(command => {
+    if(data) {
+        options.push(...data.map(command => {
             return {
                 label: command.name,
                 value: command.id

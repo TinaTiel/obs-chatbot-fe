@@ -1,19 +1,15 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import reducer from './reducers';
-import thunk from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { groupsApi } from './services/groups';
+import { commandsApi } from './services/commands';
 
-const composeEnhancers =
-  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        // Specify extension’s options like name, actionsDenylist, actionsCreators, serialize...
-      })
-    : compose;
+export const store = configureStore({
+  reducer: {
+    [groupsApi.reducerPath]: groupsApi.reducer,
+    [commandsApi.reducerPath]: commandsApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(groupsApi.middleware).concat(commandsApi.middleware),
+});
 
-const enhancer = composeEnhancers(
-  applyMiddleware(thunk)
-  // other store enhancers if any
-);
-
-const store = createStore(reducer, enhancer);
-
-export default store;
+setupListeners(store.dispatch);

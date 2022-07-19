@@ -1,26 +1,26 @@
 import {useForm} from 'react-hook-form';
 import { useLocation } from 'react-router';
-import { useDispatch, useSelector } from "react-redux";
-import { saveGroup } from '../../actions/groups';
 import Submit from '../common/form/SubmitInput';
 import TextInput from '../common/form/TextInput';
 import Loading from '../common/loading/Loading';
 import ItemListContainer from '../common/list/ItemListContainer';
 import ItemListContent from '../common/list/ItemListContent';
+import { useSaveGroupMutation } from '../../services/groups';
 
 const GroupsForm = () => {
 
-    const dispatch = useDispatch();
-    const groupsState = useSelector(state => state?.groupsState);
     const location = useLocation();
-    const group = location.state?.group || groupsState?.group ;
+    const [saveGroup, {data, error, isLoading}] = useSaveGroupMutation();
+
+    let group = location.state?.group || data;
 
     const { control, handleSubmit, getValues } = useForm({
         defaultValues: group
     });
 
     const onSubmit = (group) => {
-        dispatch(saveGroup(group));
+        console.log({group})
+        saveGroup({id: group?.id, group});
     }
 
     const onKeyDown = (e) => {
@@ -34,7 +34,7 @@ const GroupsForm = () => {
     return (
         <ItemListContainer>
             <ItemListContent>
-                <Loading loading={groupsState?.loading}>
+                <Loading loading={isLoading}>
                     <h1>{title}</h1>
                     <form onSubmit={handleSubmit(onSubmit)} onKeyDown={onKeyDown} >
                         <TextInput
