@@ -28,7 +28,7 @@ const ActionTypeForm = ({form, field, prefix, index, remove}) => {
         },
         obsSourceVisibility: {
             label: "Show/Hide Source",
-            form: <ObsSourceVisibilityForm {...{prefix: name, control}} />
+            form: <ObsSourceVisibilityForm {...{prefix: name, control, watch}} />
         },
         wait: {
             label: "Wait",

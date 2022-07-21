@@ -1,3 +1,4 @@
+import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 import ActionTypeForm from "./ActionTypeForm";
 
@@ -15,10 +16,10 @@ const ActionsListForm = ({fieldArray, form, prefix}) => {
                 >
                     {fields.map((field, index) => {
                         
-                        return <>
+                        return <React.Fragment key={field.id} >
                             {index > 0 ? <hr className="dark:border-c-fg-dark border-c-fg-light"/> : null}
-                            <ActionTypeForm key={field.id} {...{form, field, prefix, index, remove}} />
-                        </>
+                            <ActionTypeForm {...{form, field, prefix, index, remove}} />
+                        </React.Fragment>
                     })}
                     {placeholder}
                 </div>
